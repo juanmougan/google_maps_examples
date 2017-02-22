@@ -7,10 +7,10 @@ Steps to install
 
 2. Get a Google Maps API KEY
 
-3. Create a `.env` file in the root of the project, and put your API inside it, like this (replace `<YOUR_API_KEY>` with your own key):
+3. Create a `.env` file in the root of the project, and put your API inside it, like this (replace `<-YOUR_API_KEY->` with your own key):
 
-    API_KEY=<YOUR_API_KEY>
+    API_KEY=<-YOUR_API_KEY->
 
 4. Run `node index.js`
 
-5. Browse to `http://localhost/<SAMPLE_FILE>` to check what `<SAMPLE_FILE>` does ;)
+5. Browse to `http://localhost/<-SAMPLE_FILE->` to check what `<-SAMPLE_FILE->` does ;)
