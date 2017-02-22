@@ -5,15 +5,6 @@
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
-    <script>
-      function getApiKey() {
-        console.log("Will get API_KEY")
-        $.get( "maps_api_key", function( data ) {
-          const API_KEY = String(data)
-          console.log("API_KEY: " + API_KEY)
-        });
-      };
-    </script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple markers example</title>
@@ -31,33 +22,34 @@
   <body>
     <div id="map"></div>
     <script>
+      function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
 
-function initMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-}
-
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
     </script>
+
     <script async defer>
-      $(document).ready(function() {
-        var s = document.createElement("script");
-                  s.type = "text/javascript";
-                  s.src = "https://maps.googleapis.com/maps/api/js?key=" + getApiKey() + "&callback=initMap";
-                  s.innerHTML = null;
-                  //document.body.appendChild(s);
+      $.get( "maps_api_key", function( data ) {
+        const API_KEY = String(data)
+        console.log("API_KEY: " + API_KEY)
+        var uri = "https://maps.googleapis.com/maps/api/js?key=" + API_KEY + "&callback=initMap"
+        console.log("URI is: " + uri)
+        $("#maps_fetcher").attr("src", uri)
       });
-    </script>>
-    <!-- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
+    </script>
+
+    <script id="maps_fetcher" async defer>
+      console.log("Map fetcher")      
+    </script>
   </body>
 </html>
