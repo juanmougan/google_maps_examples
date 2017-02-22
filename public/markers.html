@@ -23,6 +23,7 @@
     <div id="map"></div>
     <script>
       function initMap() {
+        console.log("Init map")
         var myLatLng = {lat: -25.363, lng: 131.044};
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -44,12 +45,10 @@
         console.log("API_KEY: " + API_KEY)
         var uri = "https://maps.googleapis.com/maps/api/js?key=" + API_KEY + "&callback=initMap"
         console.log("URI is: " + uri)
-        $("#maps_fetcher").attr("src", uri)
+        var scriptSrc = "<script id=\"maps_fetcher\" src=\"API_KEY\" async defer />".replace("API_KEY", uri)
+        $( "body" ).append( scriptSrc )
       });
     </script>
 
-    <script id="maps_fetcher" async defer>
-      console.log("Map fetcher")      
-    </script>
   </body>
 </html>
