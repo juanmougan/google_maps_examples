@@ -24,18 +24,26 @@
     <script>
       function initMap() {
         console.log("Init map")
-        var myLatLng = {lat: -25.363, lng: 131.044};
+        var myLatLng = {lat: -34.616, lng: -58.573};      // Buenos Aires
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 10,
           center: myLatLng
         });
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
+        google.maps.event.addListener(map, 'click', function(event) {
+          placeMarker(event.latLng);
         });
+
+        function placeMarker(location) {
+          var marker = new google.maps.Marker({
+              position: location,
+              map: map
+          });
+        }
+
+
+
       }
     </script>
 
