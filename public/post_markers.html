@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>POST a marker example</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="js/post_markers.js">
+    </script>
+
+    <script async defer>
+      $.get( "maps_api_key", function( data ) {
+        console.log("Getting API_KEY")
+        const API_KEY = String(data)
+        var uri = "https://maps.googleapis.com/maps/api/js?key=" + API_KEY + "&callback=initMap"
+        var scriptSrc = "<script id=\"maps_fetcher\" src=\"API_KEY\" async defer />".replace("API_KEY", uri)
+        $( "body" ).append( scriptSrc )
+      });
+    </script>
+
+  </body>
+</html>
