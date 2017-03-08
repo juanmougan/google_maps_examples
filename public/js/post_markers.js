@@ -1,15 +1,16 @@
 // JS scripts for "post_markers.html"
 
-function postMarker(markerData) {
-  console.log("markerData: " + markerData + " of type: " + Object.prototype.toString.call(markerData))
-  console.log("markerData lat: " + markerData["lat"] + " of type: " + Object.prototype.toString.call(markerData["lat"]))
-  console.log("markerData long: " + markerData["long"] + " of type: " + Object.prototype.toString.call(markerData["long"]))
+function postMarker(lat, lng) {
+  var markerLatLng = {
+    "lat": lat,
+    "lng": lng
+  }
   $.ajax({
     url: 'http://localhost:4567/pedidos/guardar',
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',
-    data:  markerData
+    data:  markerLatLng
   }).done(function(data) {
     console.log("POST OK" + data)
   
@@ -29,7 +30,7 @@ function initMap() {
   
   google.maps.event.addListener(map, 'click', function(event) {
     placeMarker(event.latLng)
-    postMarker(event.latLng)
+    postMarker(event.latLng.lat(), event.latLng.lng())
   });
   
   function placeMarker(location) {
