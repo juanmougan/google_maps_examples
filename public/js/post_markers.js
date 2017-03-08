@@ -6,7 +6,7 @@ function postMarker(lat, lng) {
     "lng": lng
   }
   $.ajax({
-    url: 'http://localhost:4567/pedidos/guardar',
+    url: 'http://demo5692692.mockable.io/locations',    // TODO use a definitive mock instead
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',
@@ -14,8 +14,10 @@ function postMarker(lat, lng) {
   }).done(function(data) {
     console.log("POST OK" + data)
   
-  }).fail( function() {
-    alert( 'Error posting marker' );
+  }).fail( function() {     // TODO FIXME eventually, div is not added
+    console.log("Error saving marker in the database");
+    var errorDiv = '<div class="alert alert-danger fade in">'
+    $( "body" ).add( errorDiv )
   })
 }
 
