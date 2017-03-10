@@ -7,7 +7,7 @@
       crossorigin="anonymous"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers example</title>
+    <title>POST a marker example</title>
     <style>
       html, body {
         height: 100%;
@@ -21,30 +21,7 @@
   </head>
   <body>
     <div id="map"></div>
-    <script>
-      function initMap() {
-        console.log("Init map")
-        var myLatLng = {lat: -34.616, lng: -58.573};      // Buenos Aires
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: myLatLng
-        });
-
-        google.maps.event.addListener(map, 'click', function(event) {
-          placeMarker(event.latLng);
-        });
-
-        function placeMarker(location) {
-          var marker = new google.maps.Marker({
-              position: location,
-              map: map
-          });
-        }
-
-
-
-      }
+    <script src="js/post_markers.js">
     </script>
 
     <script async defer>
