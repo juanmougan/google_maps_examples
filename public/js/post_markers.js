@@ -12,8 +12,8 @@ function postMarker(lat, lng) {
     contentType: 'application/json',
     data:  markerLatLng
   }).done(function(data) {
-    console.log("POST OK" + data)
-  
+    console.log("POST OK")
+    console.dir(data)
   }).fail( function() {     // TODO FIXME eventually, div is not added
     console.log("Error saving marker in the database");
     var errorDiv = '<div class="alert alert-danger fade in">'
